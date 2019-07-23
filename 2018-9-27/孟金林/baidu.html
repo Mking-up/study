@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度切换</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            width: 100%;
+            height: auto;
+            border:1px solid red;
+        }
+        .box1{
+            width: 260px;
+            height: 200px;
+            margin: 50px auto;
+        }
+        .box2{
+            width: 260px;
+            height: 18px;
+        }
+        ul{
+            width: 280px;
+            overflow: hidden;
+        }
+        li{
+
+            width:140px;
+            float: right;
+        }
+        h5{
+            margin-left: 10px;
+            float: left;
+        }
+        span{
+            padding-left:20px;
+            float: right;
+            background: url(bg.png) -23px -21px no-repeat;
+            width:75px;
+        }
+        a{
+            text-decoration: none;
+            color: #333331;
+            font-size: 14px;
+
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #0079fa;
+        }
+    </style>
+    <script src="ajax-get.js"></script>
+    <script>
+        window.onload=function () {
+            var oUl=document.querySelector('ul');
+
+            ajax({
+                "url":"news.json",
+                "success":function (res) {
+                    var arr=JSON.parse(res).data;//解析数据
+
+                    arr.forEach(function (v) {
+                        // arr.forEach循环数据  创建元素
+                        var oLi=document.createElement('li');
+                        //插入内容
+                        oLi.innerHTML='<a href="'+v.link+'">'+v.title+'</a>';
+                        //插入元素
+                        oUl.appendChild(oLi);
+                    })
+                }
+            })
+        };
+
+    </script>
+</head>
+<body>
+  <div id="box" class="box1">
+      <div class="box2">
+          <h5>实时热点</h5>
+          <span>换一换</span>
+      </div>
+  <ul>
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+  </ul>
+  </div>
+</body>
+</html>

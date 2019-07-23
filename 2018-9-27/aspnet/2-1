@@ -1,0 +1,14 @@
+<html >
+<head>
+    <title>这是2-2例子</title>
+    <script type="text/javascript">
+        var inputNum = prompt("请输入你的年龄（<60岁）：");
+        if (inputNum > 60) {
+            alert("你的年龄" + inputNum + ",你不是60岁。");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

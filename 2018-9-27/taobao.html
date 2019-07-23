@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>国信安— http://http://www.gxaedu.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            width: 1000px;
+            border: 1px solid #eee;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        li{
+            float: left;
+            width: 200px;
+            height: 280px;
+            /*border: 1px solid #ccc;
+            box-sizing: border-box;*/
+        }
+        li span{
+            color: red;
+            padding-left: 10px;
+        }
+    </style>
+    <script src="ajax.js"></script>
+</head>
+<body>
+    <ul>
+        <!--<li>
+            <a href="xxxxx">
+                <img src="" alt="">
+                <p>XXXXXXXXXXXXXXXXX</p>
+                <span></span>
+            </a>
+        </li>-->
+    </ul>
+</body>
+<script>
+    var oUl=document.querySelector('ul');
+
+    ajax({
+        "url":"taobao.json",
+        "success":function (data) {
+            //解析数据
+            var arr=JSON.parse(data).data;
+            //循环数据
+            arr.forEach(function (v) {
+                //穿件元素
+                var oLi=document.createElement('li');
+                //元素里面的内容
+                oLi.innerHTML='<a href="'+v.link+'">' +
+                    '<img src="'+v.img+'" alt="">' +
+                    '<p>'+v.title+'</p>' +
+                    '<span>'+v.price+'</span>' +
+                    '</a>';
+                //插入元素
+                oUl.appendChild(oLi);
+            })
+        }
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

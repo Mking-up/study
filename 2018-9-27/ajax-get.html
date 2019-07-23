@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="cke()">单机</button>
+
+
+</body>
+<script>
+    function json2url(json) {
+        var arr=[];
+        for(var name in json){
+            arr.push(name+'='+json[name])
+
+        }
+        return arr.join('&')
+    }
+
+    function ajax(url,type,data,fn) {
+        var oAjax = new XMLHttpRequest();
+        oAjax.open(type,url+'?'+json2url(data),true)
+
+//        switch(type){
+//            case 'get':
+//            oAjax.open('get','aaa.txt',true)
+//        }
+        oAjax.send();
+        oAjax.onreadystatechange = function(){
+            if(oAjax.readyState==4){
+                if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
+                    fn(oAjax.responseText)
+                }
+
+            }
+        }
+    }
+    function cke() {
+    ajax('aaa.txt','get',{aaa:111},function (res){
+            alert(res)
+
+    })
+    }
+
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度切换</title>
+    <link type="text/css" rel="stylesheet" href="test.css">
+    <script src="ajax.js"></script>
+    <script>
+        window.onload=function () {
+            var oUl=document.querySelector('ul');
+
+            ajax({
+                "url":"12.json",
+                "success":function (res) {
+                    var arr=JSON.parse(res).data;//解析数据
+
+                    arr.forEach(function (v) {
+                        // arr.forEach循环数据  创建元素
+                        var oLi=document.createElement('li');
+                        //插入内容
+                        oLi.innerHTML='<a href="'+v.link+'">'+v.id+v.catalog+'</a>';
+                        //插入元素
+                        oUl.appendChild(oLi);
+                    })
+                }
+            })
+        };
+
+    </script>
+</head>
+<body>
+  <div id="box" class="box1">
+      <div class="box2">
+          <h5>实时热点</h5>
+          <span>换一换</span>
+      </div>
+  <ul class="xx">
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+      <!--<li><a href="#">xxxxxxxxxxxx</a></li>-->
+  </ul>
+  </div>
+</body>
+</html>
